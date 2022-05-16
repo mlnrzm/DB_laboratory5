@@ -4,7 +4,7 @@ using HardwareStoreContracts.BindingModels;
 
 namespace HardwareStoreContracts.StorageContracts
 {
-    interface ICategoryStorage
+    public interface ICategoryStorage
     {
         List<CategoryVM> GetFullList();
         List<CategoryVM> GetFilteredList(CategoryBM model);
