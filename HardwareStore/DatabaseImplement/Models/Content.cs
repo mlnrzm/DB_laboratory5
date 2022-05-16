@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DatabaseImplement.Models
 {
-    class Content
+    public class Content
     {
+        public int Id { get; set; }
+        public int MovementId { get; set; }
+        public int TechnicId { get; set; }
+        [Required]
+        public int Count { get; set; }
+        [Required]
+        public int Cost { get; set; }
+        public virtual Technic Technic { get; set; }
+        public virtual Movement Movement { get; set; }
     }
 }

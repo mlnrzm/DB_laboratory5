@@ -6,7 +6,7 @@ namespace HardwareStoreContracts.ViewModels
     public class TechnicVM
     {
         public int Id { get; set; }
-        public int CategoryTd { get; set; }
+        public int CategoryId { get; set; }
         [DisplayName("Наименование категории")]
         public string CategoryName { get; set; }
         [DisplayName("Наименование техники")]
