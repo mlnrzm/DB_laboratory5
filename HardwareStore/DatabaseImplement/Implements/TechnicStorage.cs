@@ -116,17 +116,22 @@ namespace DatabaseImplement.Implements
 
             return technic;
         }
-        private TechnicVM CreateModel(Technic content)
+        private TechnicVM CreateModel(Technic technic)
         {
-            return new TechnicVM
+            using (var context = new HardwareStorageDatabase())
             {
-                Id = content.Id,
-                CategoryId = content.CategoryId,
-                CategoryName = content.Category.CategoryName,
-                TechnicName = content.TechnicName,
-                Production = content.Production,
-                Warranty = content.Warranty
-            };
+                string categoryName = context.Categorys.FirstOrDefault(rec => rec.Id == technic.CategoryId).CategoryName;
+
+                return new TechnicVM
+                {
+                    Id = technic.Id,
+                    CategoryId = technic.CategoryId,
+                    CategoryName = categoryName,
+                    TechnicName = technic.TechnicName,
+                    Production = technic.Production,
+                    Warranty = technic.Warranty
+                };
+            }
         }
 
     }

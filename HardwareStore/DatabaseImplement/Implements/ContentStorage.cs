@@ -134,15 +134,25 @@ namespace DatabaseImplement.Implements
         }
         private ContentVM CreateModel(Content content)
         {
-            return new ContentVM
+            using (var context = new HardwareStorageDatabase())
             {
-                Id = content.Id,
-                TechnicId = content.TechnicId,
-                MovementId = content.MovementId,
-                TechnicName = content.Technic.TechnicName,
-                Count = content.Count,
-                Cost = content.Cost
-            };
+                string technicName = context.Technics.FirstOrDefault(rec => rec.Id == content.TechnicId).TechnicName;
+                DateTime movementDate = context.Movements.FirstOrDefault(rec => rec.Id == content.MovementId).Date;
+                string movementType = context.MovementTypes.FirstOrDefault(rec => rec.Id == 
+                (context.Movements.FirstOrDefault(rec => rec.Id == content.MovementId).MovementType.Id)).MovementTypeName;
+
+                return new ContentVM
+                {
+                    Id = content.Id,
+                    TechnicId = content.TechnicId,
+                    MovementId = content.MovementId,
+                    TechnicName = technicName,
+                    MovementDate = movementDate,
+                    MovementType = movementType,
+                    Count = content.Count,
+                    Cost = content.Cost
+                };
+            }
         }
     }
 }

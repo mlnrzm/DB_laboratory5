@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace HardwareStoreContracts.ViewModels
 {
@@ -7,6 +8,10 @@ namespace HardwareStoreContracts.ViewModels
         public int Id { get; set; }
         public int MovementId { get; set; }
         public int TechnicId { get; set; }
+        [DisplayName("Вид движения")]
+        public string MovementType { get; set; }
+        [DisplayName("Дата движения")]
+        public DateTime  MovementDate { get; set; }
         [DisplayName("Наименование техники")]
         public string TechnicName { get; set; }
         [DisplayName("Количество")]

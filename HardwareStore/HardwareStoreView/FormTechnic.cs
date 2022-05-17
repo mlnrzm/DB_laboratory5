@@ -49,6 +49,7 @@ namespace HardwareStoreView
                    MessageBoxIcon.Error);
                 }
             }
+            LoadData();
         }
         private void LoadData()
         {

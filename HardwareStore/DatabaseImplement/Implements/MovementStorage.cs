@@ -132,15 +132,25 @@ namespace DatabaseImplement.Implements
         }
         private MovementVM CreateModel(Movement movement)
         {
-            return new MovementVM
+            using (var context = new HardwareStorageDatabase())
             {
-                Id = movement.Id,
-                MovementTypeId = movement.MovementTypeId,
-                CounterpartyId = movement.CounterpartyId,
-                CounterpartyName = movement.Counterparty.Name,
-                MovementTypeName = movement.MovementType.MovementTypeName,
-                Date = movement.Date
-            };
+                string counterpartyName = context.Counterpartys
+                    .FirstOrDefault(rec => rec.Id == movement.CounterpartyId)
+                    .Name;
+                string movementTypeName = context.MovementTypes
+                    .FirstOrDefault(rec => rec.Id == movement.MovementTypeId)
+                    .MovementTypeName;
+
+                return new MovementVM
+                {
+                    Id = movement.Id,
+                    MovementTypeId = movement.MovementTypeId,
+                    CounterpartyId = movement.CounterpartyId,
+                    CounterpartyName = counterpartyName,
+                    MovementTypeName = movementTypeName,
+                    Date = movement.Date
+                };
+            }
         }
     }
 }
