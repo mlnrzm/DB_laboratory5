@@ -9,7 +9,7 @@ namespace HardwareStoreContracts.ViewModels
         public int MovementTypeId { get; set; }
         public int CounterpartyId { get; set; }
         [DisplayName("Вид движения")]
-        public string MovementType { get; set; }
+        public string MovementTypeName { get; set; }
         [DisplayName("Контрагент")]
         public string CounterpartyName { get; set; }
         [DisplayName("Дата движения")]

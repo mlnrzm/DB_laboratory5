@@ -8,7 +8,7 @@ using DatabaseImplement.Models;
 
 namespace DatabaseImplement.Implements
 {
-    public class MovementStorage
+    public class MovementStorage : IMovementStorage
     {
         public List<MovementVM> GetFullList()
         {
@@ -75,7 +75,7 @@ namespace DatabaseImplement.Implements
             context.SaveChanges();
         }
 
-        public void Delete(ContentBM model)
+        public void Delete(MovementBM model)
         {
             using var context = new HardwareStorageDatabase();
             var movement = context.Movements
@@ -137,6 +137,8 @@ namespace DatabaseImplement.Implements
                 Id = movement.Id,
                 MovementTypeId = movement.MovementTypeId,
                 CounterpartyId = movement.CounterpartyId,
+                CounterpartyName = movement.Counterparty.Name,
+                MovementTypeName = movement.MovementType.MovementTypeName,
                 Date = movement.Date
             };
         }

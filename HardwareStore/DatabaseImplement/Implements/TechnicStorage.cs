@@ -122,6 +122,7 @@ namespace DatabaseImplement.Implements
             {
                 Id = content.Id,
                 CategoryId = content.CategoryId,
+                CategoryName = content.Category.CategoryName,
                 TechnicName = content.TechnicName,
                 Production = content.Production,
                 Warranty = content.Warranty

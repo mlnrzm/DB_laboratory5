@@ -139,6 +139,7 @@ namespace DatabaseImplement.Implements
                 Id = content.Id,
                 TechnicId = content.TechnicId,
                 MovementId = content.MovementId,
+                TechnicName = content.Technic.TechnicName,
                 Count = content.Count,
                 Cost = content.Cost
             };
